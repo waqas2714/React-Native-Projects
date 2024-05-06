@@ -1,7 +1,8 @@
-import { Alert, StyleSheet, TextInput, View } from 'react-native'
+import { Alert, StyleSheet, Text, TextInput, View } from 'react-native'
 import PrimaryButton from '../components/PrimaryButton'
 import { useState } from 'react'
 import { Color } from '../constants/color';
+import Title from '../components/Title';
 
 const StartGameScreen = ({pickedNumberHandler}) => {
     const [enteredNumber, setEnteredNumber] = useState('');
@@ -23,8 +24,10 @@ const StartGameScreen = ({pickedNumberHandler}) => {
     }
 
   return (
+    <View style={styles.rootContainer}>
+      <Title>Guess a Number</Title>
     <View style={styles.inputContainer}>
-
+      <Text style={styles.textStyle}>Enter a Number</Text>
         <TextInput style={styles.numberInput} maxLength={2} keyboardType='number-pad' value={enteredNumber} onChangeText={(text)=>setEnteredNumber(text)} />
 
         <View style={styles.buttonsContainer}>
@@ -34,19 +37,24 @@ const StartGameScreen = ({pickedNumberHandler}) => {
             <View style={styles.buttonContainer}><PrimaryButton onPress={handleInputSubmit}>Confirm</PrimaryButton></View>
 
         </View>
-        
-        
+
     </View>
+    </View>
+
   )
 }
 
 export default StartGameScreen
 
 const styles = StyleSheet.create({
+  rootContainer : {
+    marginTop: 100,
+    alignItems : 'center'
+  },
   inputContainer : {
     alignItems : 'center',
-    marginTop: 100,
     marginHorizontal : 24,
+    marginTop: 24,
     padding : 16,
     backgroundColor : Color.primary800,
     borderRadius : 8,
@@ -56,6 +64,11 @@ const styles = StyleSheet.create({
     shadowOffset : {width : 0, height: 2},
     shadowRadius : 6,
     shadowOpacity : 0.25
+  },
+  textStyle : {
+    fontSize : 24,
+    fontWeight: '300',
+    color : Color.accent500
   },
   numberInput : {
     height : 50,
@@ -69,7 +82,8 @@ const styles = StyleSheet.create({
     textAlign : 'center'
   },
   buttonsContainer : {
-    flexDirection : 'row'
+    flexDirection : 'row',
+    marginTop : 8
   },
   buttonContainer : {
     flex : 1
