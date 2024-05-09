@@ -120,8 +120,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3,
   },
-  listContainer: {
-    flex: 1,
-    // padding: 16,
-  },
+  // listContainer: {
+  //   flex: 1,
+  //   // padding: 16,
+  // },
 });
